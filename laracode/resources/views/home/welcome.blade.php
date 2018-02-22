@@ -13,12 +13,55 @@
    	Temukan supplier terpercaya untuk segala kebutuhan konstruksi Anda
    </div>
    
-   <button class="button-masuk button-besar">Mulai Sekarang</button>
+   <button class="button-masuk button-besar">Pasang Iklan Gratis</button>
    
    </div>
 
 
 
+<div class="container">
+<div class="row ">
+	<div class="ads-home-title">
+	BARANG dan JASA TERPOPULER
+
+</div>
+
+<div class="ads container no-gap" style="margin-top: -140px;;">
+   <img class="ad col-md-12" style="margin-top: 13%; height: 300px;" src="{{url('public/uploads/lfs.jpg')}}" />
+	</div>
+
+
+<div class="mini-corusel container"></div>
+	<div class="ads ">
+   <img class="ad col-md-2 no-gap" style="margin-top: 10px; height: 150px;" src="{{url('public/uploads/ads.jpg')}}" />
+	</div>
+	<div class="ads ">
+   <img class="ad col-md-2 no-gap" style="margin-top: 10px; height: 150px;" src="{{url('public/uploads/ads.jpg')}}" />
+	</div>
+	<div class="ads ">
+   <img class="ad col-md-2 no-gap" style="margin-top: 10px; height: 150px;" src="{{url('public/uploads/ads.jpg')}}" />
+	</div>
+	<div class="ads ">
+   <img class="ad col-md-2 no-gap" style="margin-top: 10px; height: 150px;" src="{{url('public/uploads/ads.jpg')}}" />
+	</div>
+	<div class="ads ">
+   <img class="ad col-md-2 no-gap" style="margin-top: 10px; height: 150px;" src="{{url('public/uploads/ads.jpg')}}" />
+	</div>
+	<div class="ads ">
+   <img class="ad col-md-2 no-gap" style="margin-top: 10px; height: 150px;" src="{{url('public/uploads/ads.jpg')}}" />
+	</div>
+	
+	
+	</div>
+</div>
+</div>
+
+<div class="banner no-gap">
+   <img class="banner" style="margin-top: 50px;" src="{{url('public/uploads/banner-ex.png')}}" />
+
+
+
+<!--kategori-->
 
    <div class="kategori container">
 

@@ -6925,7 +6925,7 @@ margin-top: 2%;
    }
 
 .kategori{
-  margin-top: 10%;
+  margin-top: 2%;
 }
    .kat-title{
     
@@ -6948,5 +6948,10 @@ font-size: 50px;
     .katimg-3{
     width: 350px;
    }
+
+   .ads-home-title {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 12%;
 
 /*# sourceMappingURL=bootstrap.css.map */
