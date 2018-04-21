@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use App\Model\User;
+use App\Helpers\Ip;
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Event;
+use Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Request as Request;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 
-class RegisterController extends Controller
+class RegisterController extends FrontController
 {
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -36,6 +42,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        // parent::__construct(); 
         $this->middleware('guest');
     }
 
@@ -47,10 +54,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+       return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6',
+            'priority' => 'required',
         ]);
     }
 
@@ -66,6 +74,50 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'priority' => $data['priority'],
+            'ip_addr'=>Ip::get(),
+            'activation_token' => md5(uniqid()),
         ]);
+
+        Alert::success('Hi, '.ucwords($user->name).', your account has been activate ', 'Congratulations')->persistent("Ok"); 
     }
+
+//     public function activation()
+//     {
+//         $token = Request::segment(3);
+//         if (trim($token) == '') {
+//             abort(404);
+//         }
+        
+//         $user = User::where('activation_token', $token)->first();
+        
+//         if ($user) {
+//             if ($user->active != 1) {
+//                 // Activate
+//                 $user->active = 1;
+//                 $user->last_login_at =  Carbon::now();
+//                 $user->ip_addr = Ip::get();
+//                 $user->save();
+//                 Alert::success('Hi, '.ucwords($user->name).', your account has been activate ', 'Congratulations')->persistent("Ok"); 
+//             } else {
+//                 Alert::error('Error, please try again.', 'Opps')->persistent("Ok"); 
+//             }
+//             // Connect the User
+//             if (Auth::loginUsingId($user->id)) {
+//                 //$this->user = Auth::user();
+//                 //View::share('user', $this->user);
+//                 return redirect('/account');
+//             } else {
+//                 return redirect('/login');
+//             }
+//         } else {
+//             $data = ['error' => 1, 'message' => t($this->msg['activation']['error'])];
+//         }
+        
+//         // Meta Tags
+//         MetaTag::set('title', $data['message']);
+//         MetaTag::set('description', $data['message']);
+        
+//        return redirect('/login');
+// }
 }

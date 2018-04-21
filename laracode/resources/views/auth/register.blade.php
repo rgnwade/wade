@@ -53,11 +53,37 @@
                           
                         </div>
 
-                        <div class="col-md-8 col-md-offset-2 form-group">
+                       <!--  <div class="col-md-8 col-md-offset-2 form-group">
                           
 
                                 <input id="password-confirm" type="password" class="form-control" placeholder="Konfirmasi Password" name="password_confirmation" required>
                            
+                        </div> -->
+
+                                <div class="form-group{{ $errors->has('priority') ? ' has-error' : '' }}">
+                            
+
+                            <div class="col-md-8 col-md-offset-2">
+                
+                             <label class="radio-inline">
+                                 You are a
+                                </label>
+                                <label class="radio-inline">
+                                  <input type="radio" name="priority" id="priority" value="supplier" {{ (old('priority')=='guide') ? 'checked' : '' }} > Supplier
+                                </label>
+                                <label class="radio-inline">
+                                  <input type="radio" name="priority" id="priority" value="customer" {{ (old('priority')=='traveler') ? 'checked' : '' }}> Customer
+                                </label>
+                                  @if ($errors->has('priority'))
+                                 
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('priority') }} </strong>
+                                    </span>
+                                @endif
+                                
+                                
+                                
+                            </div>
                         </div>
 
 

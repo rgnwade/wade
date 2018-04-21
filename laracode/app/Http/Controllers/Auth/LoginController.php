@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Model\User;
 
 class LoginController extends Controller
 {
@@ -35,5 +36,17 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function authenticate()
+    {
+        if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
+            // Authentication passed...
+           $user =  User::find(Auth::id());
+           $user->last_login_at =  Carbon::now();
+                $user->save();
+        
+            return redirect()->intended($redirectTo);
+        }
     }
 }

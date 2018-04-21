@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ url('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ url('public/css/style.css') }}" rel="stylesheet">
     <link href="{{ url('public/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ url('public/css/pace.css') }}" rel="stylesheet">
      <link href="{{ url('public/css/sweetalert.css') }}" rel="stylesheet">
